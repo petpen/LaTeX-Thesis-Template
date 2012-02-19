@@ -1,0 +1,31 @@
+\usepackage[margin=3cm]{geometry}
+
+\newcommand{\dirChapters}{chapters}
+\newcommand{\dirPictures}{pics}
+\newcommand{\dirSources}{source}
+
+\newcommand{\docTitle}{Titel}
+\newcommand{\docTitleExtra}{Extra Beschreibung}
+\newcommand{\docAuthor}{Autor}
+\newcommand{\docLogo}{logo}
+\newboolean{isDocForDegree}
+\setboolean{isDocForDegree}{false}
+\newcommand{\docDepartment}{Fachbereich}
+\newcommand{\docType}{Dokumentart}
+\newcommand{\docDegreeLong}{Akademischer Grad}
+\newcommand{\docDegreeShort}{A.Gr}
+\newcommand{\docVerifierFirst}{Prüfer 1}
+\newcommand{\docVerifierSecond}{Prüfer 2}
+\newcommand{\docTown}{Stadt}
+\newcommand{\docDate}{\today}
+
+\hypersetup{
+    linktocpage,
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black,
+    pdftitle = {\docTitle},
+    pdfauthor = {\docAuthor},
+}
