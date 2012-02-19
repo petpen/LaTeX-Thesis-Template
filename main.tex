@@ -1,0 +1,158 @@
+\documentclass[ngerman,a4paper,11pt]{scrreprt}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\setcounter{secnumdepth}{1}
+\setcounter{tocdepth}{1}
+\usepackage[margin=3cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{epigraph}
+\usepackage{paralist}
+\usepackage{forloop}
+\usepackage{ifthen}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\dirChapters}{chapters}
+\newcommand{\dirPictures}{pics}
+\newcommand{\dirSources}{source}
+
+\newcommand{\docTitle}{Titel}
+\newcommand{\docTitleExtra}{Extra Beschreibung}
+\newcommand{\docAuthor}{Autor}
+\newcommand{\docLogo}{logo}
+\newboolean{isDocForDegree}
+\setboolean{isDocForDegree}{false}
+\newcommand{\docDepartment}{Fachbereich}
+\newcommand{\docType}{Dokumentart}
+\newcommand{\docDegreeLong}{Akademischer Grad}
+\newcommand{\docDegreeShort}{A.Gr}
+\newcommand{\docVerifierFirst}{Prüfer 1}
+\newcommand{\docVerifierSecond}{Prüfer 2}
+\newcommand{\docTown}{Stadt}
+\newcommand{\docDate}{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\hypersetup{
+    linktocpage,
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black,
+    pdftitle = {\docTitle},
+    pdfauthor = {\docAuthor},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+\includegraphics[width=5cm]{\dirPictures/\docLogo}
+
+\vspace{1.1cm}
+
+\textsf{\textbf{\Large \docDepartment}}
+
+\vspace{2.2cm}
+
+\textsf{\textbf{\huge \MakeUppercase \docType}}
+
+\vspace{0.6cm}
+
+\textsf{\Large \docTitle}
+
+\textsf{\docTitleExtra}
+
+\vspace{2.5cm}
+
+\begin{tabular}{rl}
+Vorgelegt von: & \docAuthor\\
+am: & \docDate\\
+\end{tabular}
+
+\ifthenelse{\boolean{isDocForDegree}}{
+
+\vspace{2cm}
+
+zum
+
+Erlangen des akademisches Grades
+
+\vspace{1.8cm}
+
+\textsf{\textbf{\huge \MakeUppercase{\docDegreeLong}}}\\
+\textsf{\textbf{(\docDegreeShort)}}
+
+\vspace{1cm}
+
+\begin{tabular}{rl}
+Erstbetreuer: & \docVerifierFirst\\
+Zweitbetreuer: & \docVerifierSecond\\
+\end{tabular}
+}{
+\vspace{4.8cm}
+
+\begin{tabular}{rl}
+Prüfer: & \docVerifierFirst\\
+\end{tabular}
+}
+
+\end{center}
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{\dirChapters/selbst.tex}
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{\dirChapters/dank.tex}
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{\dirChapters/zusammenfassung.tex}
+
+\vspace{2cm}
+
+\input{\dirChapters/abstract.tex}
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{counterChapters}
+\newcounter{counterSection}
+
+\forloop{counterChapters}{1}{\value{counterChapters} < 10} {
+
+	\IfFileExists{\dirChapters/\arabic{counterChapters}}{
+		\clearpage
+		\input{\dirChapters/\arabic{counterChapters}}
+	
+		\forloop{counterSection}{1}{\value{counterSection} < 20} {
+			\IfFileExists{\dirChapters/\arabic{counterChapters}.\arabic{counterSection}}{
+				\input{\dirChapters/\arabic{counterChapters}.\arabic{counterSection}}
+			}{}
+		}
+		
+		\clearpage
+	}{}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliographystyle{alphadin}
+\bibliography{literatur}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
