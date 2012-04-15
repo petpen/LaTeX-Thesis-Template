@@ -13,11 +13,13 @@
 \usepackage{paralist}
 \usepackage{forloop}
 \usepackage{ifthen}
+\usepackage[automark]{scrpage2}
+\usepackage{mathtools}
 
 \input{config.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\pagenumbering{roman}
 \begin{document}
 
 \begin{titlepage}
@@ -92,9 +94,13 @@ Prüfer: & \docVerifierFirst\\
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\tableofcontents
+\tableofcontents{
+	\pagenumbering{arabic}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{scrheadings}
 
 \newcounter{counterChapters}
 \newcounter{counterSection}

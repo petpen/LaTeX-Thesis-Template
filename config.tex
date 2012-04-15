@@ -1,24 +1,33 @@
 \usepackage[margin=3cm]{geometry}
 
+\newboolean{isDocForDegree}
+
+% Folders
 \newcommand{\dirChapters}{chapters}
 \newcommand{\dirPictures}{pics}
 \newcommand{\dirSources}{source}
 
-\newcommand{\docTitle}{Titel}
-\newcommand{\docTitleExtra}{Extra Beschreibung}
-\newcommand{\docAuthor}{Autor}
-\newcommand{\docLogo}{FH-Logo}
-\newboolean{isDocForDegree}
-\setboolean{isDocForDegree}{false}
-\newcommand{\docDepartment}{Fachbereich}
-\newcommand{\docType}{Dokumentart}
-\newcommand{\docDegreeLong}{Akademischer Grad}
-\newcommand{\docDegreeShort}{A.Gr}
-\newcommand{\docVerifierFirst}{Prüfer 1}
-\newcommand{\docVerifierSecond}{Prüfer 2}
-\newcommand{\docTown}{Stadt}
-\newcommand{\docDate}{\today}
+% Global variables
+\newcommand{\docTitle}			{Titel}
+\newcommand{\docTitleExtra}		{Extra Beschreibung}
+\newcommand{\docAuthor}			{Autor}
+\newcommand{\docLogo}			{FH-Logo}
+\newcommand{\docDepartment}		{Fachbereich}
+\newcommand{\docType}			{Dokumentart}
+\newcommand{\docDegreeLong}		{Akademischer Grad}
+\newcommand{\docDegreeShort}	{A.Gr}
+\newcommand{\docTown}			{Stadt}
+\newcommand{\docDate}			{\today}
 
+\setboolean{isDocForDegree}		{false}
+\newcommand{\docVerifierFirst}	{Prüfer 1}
+
+% You only need a second verifier if
+% isDocForDegree is true
+\newcommand{\docVerifierSecond}	{Prüfer 2}
+
+
+% Setup some styles and PDF settings
 \hypersetup{
     linktocpage,
     colorlinks,
@@ -29,3 +38,10 @@
     pdftitle = {\docTitle},
     pdfauthor = {\docAuthor},
 }
+
+% Setup header and footer
+\clearscrheadfoot
+\ohead{\\\headmark}
+\ihead{\includegraphics[scale=0.25]{pics/FH-Logo-gray.pdf}}
+\ofoot[\pagemark]{\pagemark}
+\setheadsepline{.4pt}
