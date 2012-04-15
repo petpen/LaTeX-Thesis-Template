@@ -46,26 +46,26 @@ am: & \docDate\\
 \end{tabular}
 
 \ifthenelse{\boolean{isDocForDegree}}{
-
-\vspace{2cm}
-
-zum
-
-Erlangen des akademisches Grades
-
-\vspace{1.8cm}
-
-\textsf{\textbf{\huge \MakeUppercase{\docDegreeLong}}}\\
-\textsf{\textbf{(\docDegreeShort)}}
-
-\vspace{1cm}
-
-\begin{tabular}{rl}
-Erstbetreuer: & \docVerifierFirst\\
-Zweitbetreuer: & \docVerifierSecond\\
+	
+	\vspace{2cm}
+	
+	zum
+	
+	Erlangen des akademisches Grades
+	
+	\vspace{1.8cm}
+	
+	\textsf{\textbf{\huge \MakeUppercase{\docDegreeLong}}}\\
+	\textsf{\textbf{(\docDegreeShort)}}
+	
+	\vspace{1cm}
+	
+	\begin{tabular}{rl}
+	Erstbetreuer: & \docVerifierFirst\\
+	Zweitbetreuer: & \docVerifierSecond\\
 \end{tabular}
 }{
-\vspace{4.8cm}
+	\vspace{4.8cm}
 
 \begin{tabular}{rl}
 Prüfer: & \docVerifierFirst\\
@@ -110,7 +110,7 @@ Prüfer: & \docVerifierFirst\\
 				\input{\dirChapters/\arabic{counterChapters}.\arabic{counterSection}}
 			}{}
 		}
-		
+
 		\clearpage
 	}{}
 }
